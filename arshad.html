@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arshad Ansari</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: aliceblue;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: linear-gradient(45deg, crimson, darkred);
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .container h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .container h1 {
+            font-size: 20px;
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .container h3 {
+            font-size: 16px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .container h3 span {
+            font-weight: normal;
+            color: #444;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .whatsapp {
+            background: green;
+        }
+
+        .instagram {
+            background: #e4405f;
+        }
+
+        .facebook {
+            background: #3b5998;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background: crimson;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .back-btn:hover {
+            background: #555;
+        }
+
+        #name {
+            color: crimson;
+            font-weight: 800;
+        }
+
+        /* New Styles */
+        .input-field {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .input-field label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        .input-field input,
+        .input-field textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .input-field button {
+            background: crimson;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .input-field button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="navbar">Arshad Ansari</div>
+
+        <div class="container">
+            <img src="friend7.jpg" alt="Adnan Ansari">
+            <h2>Mr. Arshad Ansari</h2>
+            <h1>Information</h1>
+            <p>Hello, My Name Is .</p>
+
+            <h3>Name: <span>Arshad Ansari</span></h3>
+            <p class="cb">＆ I'm a <span id="name"></span></p>
+            <h3>Address: <span>Mumbai</span></h3>
+            <h3>Email: <span><a href="mailto:ansariarshad20@gmail.com">ansariarshad20@gmail.com</a></span></h3>
+
+            <!-- New Input Field for Message -->
+            <div class="input-field">
+                <label for="message">Message:</label>
+                <textarea id="message" rows="4" placeholder="Type your message here..."></textarea>
+                <button onclick="sendMessage()">Send Message</button>
+            </div>
+
+            <div class="social-links">
+                <a href="https://wa.me/919876543210" class="whatsapp" target="_blank">WhatsApp</a>
+                <a href="https://instagram.com/aarif07" class="instagram" target="_blank">Instagram</a>
+                <a href="https://facebook.com/aarif07" class="facebook" target="_blank">Facebook</a>
+            </div>
+
+            <a href="team07.html" class="back-btn">Back to Home</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var hello = new Typed("#name", {
+            strings: ["Mechnical", "Workers"],
+            typeSpeed: 100,
+            backSpeed: 60,
+            loop: true
+        });
+
+        function sendMessage() {
+            var message = document.getElementById ("message").value;
+            if (message.trim() !== "") {
+                alert("Message Sent: " + message);
+                document.getElementById("message").value = ""; // Clear the textarea
+            } else { 
+                alert("Please enter a message.");
+            }
+        }
+    </script>
+</body>
+
+</html>
+ 

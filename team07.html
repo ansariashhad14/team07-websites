@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: crimson;
+            padding: 15px 20px;
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin: 0 15px;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+
+        .menu li a:hover {
+            background: #555;
+            border-radius: 5px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                background: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                text-align: center;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .menu li {
+                margin: 10px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+        }
+
+        .hero {
+            margin-top: 80px;
+            padding: 50px;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+        }
+
+        .about {
+            padding: 20px;
+            background: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-weight: 900;
+            font-style: italic;
+            font-size: 40px;
+            color: crimson;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .friend {
+            width: 250px;
+            text-align: center;
+            transition: transform 0.5s ease-in-out;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .friend .img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .friend img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .friend:hover img {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .friend h1 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        #fire {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        .video {
+            height: 400px;
+            width: 100%;
+            background-color: #ff416c;
+        }
+
+        button {
+            margin-top: 20px;
+            height: 30px;
+            width: 90px;
+            background-color: red;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button {
+            margin-top: 20px;
+            height: 35px;
+            width: 120px;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 35px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .wel {
+            color: black;
+        }
+
+        p {
+            font-size: 25px;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer p {
+            font-size: 16px;
+        }
+
+        .footer a {
+            color: crimson;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* #name {
+            color: black;
+            font-weight: bold;
+            font-size: 30px;
+        } */
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">TEAM<img src="fire.png" id="fire">07</div>
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+
+    <div class="hero" id="home">
+        <h1 class="wel">Welcome to Our Friendship Website</h1>
+        <!-- <p class="cb">＆  <span id="name"></span></p> -->
+        <p> <span> Celebrating our memories together!</span></p>
+    </div>
+
+
+    <!-- <div class="video">
+    <div class="video" id="firstvideo">
+        <iframe width="100%" height="100%" src="video.mp4" frameborder="0" allow="autoplay; encrypted-media"
+            allowfullscreen></iframe>
+    </div>
+</div> -->
+
+    <div class="about" id="about">
+        <h1>About Us</h1>
+        <p>We are a group of close friends who cherish <br>our time together. <br>Through thick and thin, we support
+            each
+            other and share<br> countless unforgettable moments.<br> This website is a tribute to our<br>bond and the
+            memories we've created.</p><br>
+    </div>
+
+    <h1>Friends Gallery</h1>
+    <section class="gallery" id="gallery">
+        <div class="friend">
+            <div class="img-container"><img src="friend1.jpg" alt="Friend 1"></div>
+
+            <h1>Mr Aarif Ansari</h1>
+            <button><a href="aarif.html" target="_blank" style="text-decoration: none; color: white;">Read
+                    More</a></button>
+        </div>
+
+
+
+        </div>
+        <div class="friend">
+            <div class="img-container"><img src="friend2.jpg" alt="Friend 2"></div>
+
+            <h1>Mr Adnan Ansari</h1>
+            <button><a href="adnan.html" target="_blank" style="text-decoration: none; color: white;">Read
+                    More</a></button>
+        </div>
+
+
+
+        <div class="friend">
+            <div class="img-container"><img src="friend3.jpg" alt="Friend 3"></div>
+
+            <h1>Mr Ashhad Ansari</h1>
+            <button><a href="ashhad.html" target="_blank" style="text-decoration: none; color: white;">Read
+                    More</a></button>
+        </div>
+
+
+
+        <div class="friend">
+            <div class="img-container"><img src="friend4.jpg" alt="Friend 4"></div>
+
+            <h1>Mr Amaan Ansari</h1>
+            <button><a href="amaan.html" target="_blank" style="text-decoration: none; color: white;">Read
+                    More</a></button>
+        </div>
+
+
+
+        <div class="friend">
+            <div class="img-container"><img src="friend7.jpg" alt="Friend 4"></div>
+
+            <h1>Mr Arshad Ansari</h1>
+            <button><a href="arshad.html" target="_blank" style="text-decoration: none; color: white;">Read
+                    More</a></button>
+        </div>
+
+
+
+
+        <div class="friend">
+            <div class="img-container"><img src="friend5.jpg" alt="Friend 5"></div>
+
+            <h1>Mr Shahzad Ansari</h1>
+            <button><a href="sahzad.html" target="_blank" style="text-decoration: none; color: white;">Read
+                    More</a></button>
+        </div>
+
+
+
+        <div class="friend">
+            <div class="img-container"><img src="friend6.jpg" alt="Friend 6"></div>
+
+            <h1>Mr Fayyaz Ansari</h1>
+            <button><a href="fayyaz.html" target="_blank" style="text-decoration: none; color: white;">Read
+                    More</a></button>
+        </div>
+
+
+
+    </section>
+    <footer class="footer">
+        <p>&copy; 2025 Friends Website.</p>
+        <p>Created with ❤️ by <a href="#">Team 07</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('active');
+        }
+
+
+        // var hello = new Typed("#name", {
+        //     strings: ["our memories", "together"],
+        //     typeSpeed: 100,
+        //     backSpeed: 60,
+        //     loop: true
+        // });
+    </script>
+</body>
+
+</html>
